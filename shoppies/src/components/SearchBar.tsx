@@ -2,14 +2,18 @@ import { Space } from 'antd';
 import axios from 'axios';
 import React, { CSSProperties, FC, useState } from 'react';
 import { IOmdbResponse, Movie } from '../types';
+import { MovieSearchResult } from './MovieSearchResult';
 
 const searchBarStyle: CSSProperties = {
-    width: '80%',
+    width: '100%',
+    padding: 10,
+    borderRadius: 5,
 };
 
 export const SearchBar: FC = () => {
     const [searchText, setSearchText] = useState('');
     const [searching, setSearching] = useState(false);
+    const [focused, setFocused] = useState(false);
     const [searchResults, setSearchResults] = useState<Movie[]>([]);
     const [error, setError] = useState<string>('');
 
@@ -47,10 +51,30 @@ export const SearchBar: FC = () => {
 
     return (
         <>
-            <input style={searchBarStyle} value={searchText} type={'text'} onChange={handleInputTextChange}></input>
-            <div>
-                <Space>{searchResults.map((movie) => movie.Title)}</Space>
-                <p>{error}</p>
+            <div style={{ width: '80%', margin: '0 auto' }}>
+                <input
+                    style={searchBarStyle}
+                    value={searchText}
+                    type={'text'}
+                    onChange={handleInputTextChange}
+                    onFocus={() => setFocused(true)}
+                    onBlur={() => setFocused(false)}
+                ></input>
+                <div
+                    style={{
+                        overflowY: 'scroll',
+                        overflowX: 'hidden',
+                        width: '103%',
+                        height: focused && searchText.length > 0 ? 300 : 0,
+                        transition: 'height 0.3s ease',
+                        position: 'fixed',
+                    }}
+                >
+                    {searchResults.map((movie) => (
+                        <MovieSearchResult key={movie.imdbId} movie={movie} />
+                    ))}
+                </div>
+                {/* <p>{error}</p> */}
             </div>
         </>
     );

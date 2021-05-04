@@ -10,15 +10,22 @@ const footerStyle: CSSProperties = {
     bottom: 0,
     textAlign: 'center',
 };
+const layoutStyle: CSSProperties = {
+    width: '100%',
+    margin: '0 auto',
+};
+const contentStyle: CSSProperties = {
+    margin: 50,
+};
 
 export const Page: FC = () => {
     return (
-        <Layout>
+        <Layout style={layoutStyle}>
             <Header>
                 <h1 className={'centered-text'}>The Shoppies</h1>
             </Header>
-            <Content>
-                <Space>
+            <Content style={contentStyle}>
+                <Space align={'center'}>
                     <SearchBar />
                     <NominationsList />
                 </Space>
