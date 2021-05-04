@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
+import { Page } from './components';
+import './styles/master.css';
 
-function App() {
-    return <div className="App">The Shoppies</div>;
-}
+const App: FC = () => {
+    return (
+        <div className="App">
+            <Page />
+        </div>
+    );
+};
 
 export default App;
