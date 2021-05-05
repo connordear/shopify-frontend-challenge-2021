@@ -1,12 +1,15 @@
 import React, { FC } from 'react';
+import { RecoilRoot } from 'recoil';
 import { Page } from './components';
 import './styles/master.css';
 
 const App: FC = () => {
     return (
-        <div className="App">
-            <Page />
-        </div>
+        <RecoilRoot>
+            <div className="App">
+                <Page />
+            </div>
+        </RecoilRoot>
     );
 };
 

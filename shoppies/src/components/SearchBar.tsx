@@ -1,6 +1,6 @@
-import { Space } from 'antd';
 import axios from 'axios';
-import React, { CSSProperties, FC, useState } from 'react';
+import React, { CSSProperties, FC, useEffect, useRef, useState } from 'react';
+import { useDebounce, useOutsideAlerter } from '../hooks';
 import { IOmdbResponse, Movie } from '../types';
 import { MovieSearchResult } from './MovieSearchResult';
 
@@ -11,14 +11,20 @@ const searchBarStyle: CSSProperties = {
 };
 
 export const SearchBar: FC = () => {
-    const [searchText, setSearchText] = useState('');
-    const [searching, setSearching] = useState(false);
-    const [focused, setFocused] = useState(false);
+    const [debouncedSearchText, searchText, setSearchText] = useDebounce('', 250);
+    const [, setSearching] = useState(false);
+    const [displayResults, setDisplayResults] = useState(false);
     const [searchResults, setSearchResults] = useState<Movie[]>([]);
     const [error, setError] = useState<string>('');
 
+    const wrapperRef = useRef(null);
+    useOutsideAlerter(wrapperRef, () => setDisplayResults(false));
+
+    useEffect(() => {
+        getMoviesByName(debouncedSearchText);
+    }, [debouncedSearchText]);
+
     const reset = () => {
-        setSearchText('');
         setSearching(false);
         setSearchResults([]);
         setError('');
@@ -46,35 +52,32 @@ export const SearchBar: FC = () => {
 
     const handleInputTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchText(e.target.value);
-        getMoviesByName(e.target.value);
     };
 
     return (
         <>
-            <div style={{ width: '80%', margin: '0 auto' }}>
+            <div ref={wrapperRef} style={{ width: '80%', margin: '0 auto' }}>
                 <input
                     style={searchBarStyle}
                     value={searchText}
                     type={'text'}
                     onChange={handleInputTextChange}
-                    onFocus={() => setFocused(true)}
-                    onBlur={() => setFocused(false)}
+                    onFocus={() => setDisplayResults(true)}
                 ></input>
-                <div
+                <ul
                     style={{
                         overflowY: 'scroll',
                         overflowX: 'hidden',
                         width: '103%',
-                        height: focused && searchText.length > 0 ? 300 : 0,
+                        height: displayResults && searchText.length > 0 ? 300 : 0,
                         transition: 'height 0.3s ease',
                         position: 'fixed',
                     }}
                 >
-                    {searchResults.map((movie) => (
-                        <MovieSearchResult key={movie.imdbId} movie={movie} />
-                    ))}
-                </div>
-                {/* <p>{error}</p> */}
+                    {searchResults.length > 0
+                        ? searchResults.map((movie) => <MovieSearchResult key={movie.imdbID} movie={movie} />)
+                        : error}
+                </ul>
             </div>
         </>
     );

@@ -1,5 +1,15 @@
 import React, { FC } from 'react';
+import { useRecoilState } from 'recoil';
+import { nomineesAtom } from '../recoil';
+import { NominationDisplay } from './NominationDisplay';
 
 export const NominationsList: FC = () => {
-    return <>Noms list</>;
+    const [nominees] = useRecoilState(nomineesAtom);
+    return (
+        <ul>
+            {Array.from(nominees.values()).map((nominee) => (
+                <NominationDisplay key={nominee.imdbID} movie={nominee} />
+            ))}
+        </ul>
+    );
 };

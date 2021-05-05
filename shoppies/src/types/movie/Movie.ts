@@ -20,7 +20,7 @@ export class Movie implements IMovie {
     Metascore = '';
     imdbRating = '';
     imdbVotes = '';
-    imdbId = '';
+    imdbID = '';
     Type = '';
     DVD = '';
     BoxOffice = '';
