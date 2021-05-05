@@ -1,0 +1,26 @@
+.MSR_li {
+    display: 'flex';
+    align-items: 'center';
+}
+
+.MSR_button {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-top: 1px solid var(--dark-opal);
+    display: flex;
+    font-family: 'Work Sans', sans-serif;
+    color: var(--dark-text);
+    font-weight: 200;
+    font-size: 18px;
+    background-color: var(--white);
+}
+
+.MSR_button:hover {
+    background-color: var(--opal);
+}
+
+.MSR_button:disabled {
+    background-color: var(--dark-opal);
+}

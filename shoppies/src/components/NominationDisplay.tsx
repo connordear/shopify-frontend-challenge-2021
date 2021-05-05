@@ -3,6 +3,9 @@ import { useRecoilState, useSetRecoilState } from 'recoil';
 import { nomineesAtom } from '../state';
 import { Movie } from '../types';
 import update from 'immutability-helper';
+import '../styles/NominationDisplay.css';
+import { Col, Row, Space } from 'antd';
+
 interface NominationDisplayProps {
     movie: Movie;
 }
@@ -15,8 +18,17 @@ export const NominationDisplay: FC<NominationDisplayProps> = ({ movie }) => {
     }, [movie, nominees]);
 
     return (
-        <li onClick={removeMovie}>
-            {movie.Title} ({movie.Year})
+        <li className={'NominationDisplay_li'} onClick={removeMovie}>
+            <div className={'NominationDisplay_wrapper'}>
+                {movie.Poster !== 'N/A' ? (
+                    <img src={movie.Poster} height={300} width={200} />
+                ) : (
+                    <div className={'NominationDisplay_filler'}> </div>
+                )}
+                <h3 className={'centered-text'}>
+                    {movie.Title} ({movie.Year})
+                </h3>
+            </div>
         </li>
     );
 };

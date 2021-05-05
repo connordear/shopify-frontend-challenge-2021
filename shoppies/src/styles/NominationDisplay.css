@@ -1,0 +1,25 @@
+@import 'master.css';
+
+.NominationDisplay_li {
+    display: flex;
+    justify-content: center;
+}
+
+.NominationDisplay_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    padding: 20px;
+}
+
+.NominationDisplay_wrapper:hover {
+    background-color: var(--transparent-white);
+}
+
+.NominationDisplay_filler {
+    display: block;
+    height: 300px;
+    width: 200px;
+    background-color: var(--dark-opal);
+}

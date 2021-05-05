@@ -3,16 +3,11 @@ import React, { CSSProperties, FC, useEffect, useRef, useState } from 'react';
 import { useDebounce, useOutsideAlerter } from '../hooks';
 import { IOmdbResponse, Movie } from '../types';
 import { MovieSearchResult } from './MovieSearchResult';
-
-const searchBarStyle: CSSProperties = {
-    width: '100%',
-    padding: 10,
-    borderRadius: 5,
-};
+import '../styles/SearchBar.css';
 
 export const SearchBar: FC = () => {
-    const [debouncedSearchText, searchText, setSearchText] = useDebounce('', 250);
-    const [, setSearching] = useState(false);
+    const [debouncedSearchText, searchText, setSearchText] = useDebounce('', 200);
+    const [searching, setSearching] = useState(false);
     const [displayResults, setDisplayResults] = useState(false);
     const [searchResults, setSearchResults] = useState<Movie[]>([]);
     const [error, setError] = useState<string>('');
@@ -43,11 +38,12 @@ export const SearchBar: FC = () => {
                     setError(res.data.Error);
                     setSearchResults([]);
                 }
+                setSearching(false);
             })
             .catch((error) => {
                 console.log(error);
+                setSearching(false);
             });
-        setSearching(false);
     };
 
     const handleInputTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,22 +52,21 @@ export const SearchBar: FC = () => {
 
     return (
         <>
-            <div ref={wrapperRef} style={{ width: '80%', margin: '0 auto' }}>
+            <div ref={wrapperRef} className={'flex-center SearchBar_wrapper'}>
                 <input
-                    style={searchBarStyle}
+                    // style={searchBarStyle}
+                    className={'SearchBar_input input'}
                     value={searchText}
                     type={'text'}
                     onChange={handleInputTextChange}
                     onFocus={() => setDisplayResults(true)}
+                    placeholder={'Enter a movie name, e.g. "moonrise kingdom"'}
                 ></input>
+                {searching && <div className={'SearchBar_spinner'} id={'loading'}></div>}
                 <ul
+                    className={'SearchBar_ul'}
                     style={{
-                        overflowY: 'scroll',
-                        overflowX: 'hidden',
-                        width: '103%',
-                        height: displayResults && searchText.length > 0 ? 300 : 0,
-                        transition: 'height 0.3s ease',
-                        position: 'fixed',
+                        height: displayResults && searchResults.length > 0 ? 300 : 0,
                     }}
                 >
                     {searchResults.length > 0

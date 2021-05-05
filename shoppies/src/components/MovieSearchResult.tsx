@@ -1,9 +1,10 @@
 import React, { FC, useCallback, useEffect, useState } from 'react';
+import { useRecoilState } from 'recoil';
 import { Movie } from '../types';
 import { nomineesAtom } from '../state';
-import { useRecoilState } from 'recoil';
+import notFoundImg from '../assets/not-found.png';
 import update from 'immutability-helper';
-
+import '../styles/MovieSearchResult.css';
 interface MovieSearchResultProps {
     movie: Movie;
 }
@@ -18,14 +19,13 @@ export const MovieSearchResult: FC<MovieSearchResultProps> = ({ movie }) => {
     }, [nominees, movie]);
 
     const addToNominees = useCallback(() => {
-        console.log(`Adding ${movie.Title} to nominees`);
         setNominees((nominees) => update(nominees, { $add: [[movie.imdbID, movie]] }));
     }, [movie]);
 
     return (
-        <li style={{ display: 'flex', alignItems: 'center', margin: 5 }}>
-            <button onClick={addToNominees} disabled={alreadyNominated}>
-                <img src={movie.Poster} alt={movie.Poster} height={75} />
+        <li className={'MSR_li'}>
+            <button className={'MSR_button'} onClick={addToNominees} disabled={alreadyNominated}>
+                <img src={movie.Poster.length > 0 ? movie.Poster : notFoundImg} height={75} width={50} />
                 <h4 style={{ marginLeft: 10 }}>
                     {movie.Title} ({movie.Year})
                 </h4>

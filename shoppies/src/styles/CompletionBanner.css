@@ -1,0 +1,63 @@
+@import 'master.css';
+
+/* Yoinked from https://codepen.io/web-tiki/pen/ByqBVB, author: web-tiki */
+
+.CompletionBanner_wrapper {
+    width: 100%;
+    display: flex;
+    transition: 0.5s height ease, 0.5s opacity ease;
+}
+
+.ribbon {
+    font-size: 20px;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+.text {
+    display: inline-block;
+    padding: 0.5em 1em;
+    min-width: 20em;
+    line-height: 1.2em;
+    background: var(--red);
+    position: relative;
+}
+.ribbon:after,
+.ribbon:before,
+.text:before,
+.text:after,
+.bold:before {
+    content: '';
+    position: absolute;
+    border-style: solid;
+}
+.ribbon:before {
+    top: 0.3em;
+    left: 0.2em;
+    width: 100%;
+    height: 100%;
+    border: none;
+    z-index: -2;
+}
+.text:before {
+    bottom: 100%;
+    left: 0;
+    border-width: 0.5em 0.7em 0 0;
+    border-color: transparent var(--dark-red) transparent transparent;
+}
+.text:after {
+    top: 100%;
+    right: 0;
+    border-width: 0.5em 2em 0 0;
+    border-color: var(--light-red) transparent transparent transparent;
+}
+.ribbon:after,
+.bold:before {
+    top: 0.5em;
+    right: -2em;
+    border-width: 1.1em 1em 1.1em 3em;
+    border-color: var(--dark-red) transparent var(--dark-red) var(--dark-red);
+    z-index: -1;
+}

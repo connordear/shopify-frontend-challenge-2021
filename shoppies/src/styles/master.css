@@ -1,3 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Roboto&family=Work+Sans:wght@200;400;700&display=swap');
+:root {
+    --main-bg-color: #191c2c;
+    --dark-text: #191c2cbb;
+    --red: #d7263d;
+    --dark-red: #961b2c;
+    --light-red: #d83b50;
+    --gold: #fcca46;
+    --white: #f3f4f6;
+    --opal: #a4bab7;
+    --dark-opal: #687c7bb6;
+    --transparent-white: #f3f4f628;
+}
+html {
+    overflow-y: scroll;
+}
+
+body {
+    background-color: var(--main-bg-color);
+    color: var(--white);
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin-block-start: 40px;
+    font-size: 90px;
+    font-family: 'Work Sans', sans-serif;
+}
+
+h2 {
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .centered-text {
     text-align: center;
+}
+
+.red-highlight {
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 25px;
+    background-image: linear-gradient(90deg, transparent 0%, var(--gold));
+    background-position: 0% 110%;
+    background-size: auto;
+    background-repeat: repeat-x;
+    background-size: 200% 50%;
+    -moz-transition: background-position 0.5s;
+    -webkit-transition: background-position 0.5s;
+    -o-transition: background-position 0.5s;
+    -ms-transition: background-position 0.5s;
+    transition: background-position 0.5s;
+}
+
+.show-highlight {
+    background-position: -100% 150%;
+    -moz-transition: background-position 1s;
+    -webkit-transition: background-position 1s;
+    -o-transition: background-position 1s;
+    -ms-transition: background-position 1s;
+    transition: background-position 1s;
+}
+
+::-webkit-scrollbar {
+    background-color: rgba(0, 0, 0, 0);
+    margin: 1px;
+    width: 0.8em;
+}
+
+::-webkit-scrollbar-thumb:window-inactive,
+::-webkit-scrollbar-thumb {
+    background: rgba(119, 119, 119, 0.658);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-corner {
+    background: rgba(0, 0, 0, 0);
 }

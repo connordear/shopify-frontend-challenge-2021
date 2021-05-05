@@ -1,15 +1,27 @@
 import React, { FC } from 'react';
-import { useRecoilState } from 'recoil';
-import { nomineesAtom } from '../state';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { nomineeCountSelector, nomineesAtom } from '../state';
 import { NominationDisplay } from './NominationDisplay';
+import '../styles/NominationsList.css';
 
 export const NominationsList: FC = () => {
-    const [nominees] = useRecoilState(nomineesAtom);
+    const nominees = useRecoilValue(nomineesAtom);
+    const nomineeCount = useRecoilValue(nomineeCountSelector);
     return (
-        <ul>
-            {Array.from(nominees.values()).map((nominee) => (
-                <NominationDisplay key={nominee.imdbID} movie={nominee} />
-            ))}
-        </ul>
+        <div className={'NominationsList_wrapper'}>
+            {nomineeCount > 0 ? (
+                <>
+                    <h3 className={'centered-text NominationsList_heading'}>Your Nominations</h3>
+                    <p className={'centered-text NominationsList_p'}>(Click to remove)</p>
+                    <ul className={'NominationsList_ul'}>
+                        {Array.from(nominees.values()).map((nominee) => (
+                            <NominationDisplay key={nominee.imdbID} movie={nominee} />
+                        ))}
+                    </ul>
+                </>
+            ) : (
+                <h3 className={'centered-text'}>Select a movie from the dropdown to begin.</h3>
+            )}
+        </div>
     );
 };

@@ -1,39 +1,35 @@
 import { Layout, Space } from 'antd';
-import React, { CSSProperties, FC } from 'react';
+import React, { CSSProperties, FC, useEffect, useState } from 'react';
 import { NominationsList, SearchBar, CompletionBanner } from '.';
+import '../styles/master.css';
 
 const { Header, Footer, Content } = Layout;
-
-const footerStyle: CSSProperties = {
-    position: 'fixed',
-    width: '100%',
-    bottom: 0,
-    textAlign: 'center',
-};
 const layoutStyle: CSSProperties = {
     width: '100%',
     margin: '0 auto',
 };
-const contentStyle: CSSProperties = {
-    margin: 50,
-};
-
 export const Page: FC = () => {
+    const [titleClasses, setTitleClasses] = useState('centered-text red-highlight');
+
+    useEffect(() => {
+        setTitleClasses('centered-text red-highlight show-highlight');
+    }, []);
+
     return (
         <Layout style={layoutStyle}>
             <Header>
-                <h1 className={'centered-text'}>The Shoppies</h1>
+                <div className={'flex-center'}>
+                    <h1 className={titleClasses}>SHOPPIES</h1>
+                </div>
             </Header>
-            <Content style={contentStyle}>
-                <Space align={'center'}>
-                    <SearchBar />
-                    <NominationsList />
-                    <CompletionBanner />
-                </Space>
+            <Content>
+                <CompletionBanner />
+                <SearchBar />
+                <NominationsList />
             </Content>
-            <Footer style={footerStyle}>
+            {/* <Footer style={footerStyle}>
                 <h2 className={'centered-text'}>Connor Dear</h2>
-            </Footer>
+            </Footer> */}
         </Layout>
     );
 };

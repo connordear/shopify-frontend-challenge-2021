@@ -1,0 +1,79 @@
+@import 'master.css';
+
+.SearchBar_wrapper {
+    flex-direction: column;
+    margin: 0 auto;
+    width: 50%;
+}
+
+/* Fixes internal padding / width issue */
+input.input {
+    width: 100%;
+    padding-left: 50px;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+    box-sizing: border-box; /* Opera/IE 8+ */
+}
+
+.SearchBar_input {
+    display: inline-block;
+    margin: 0 auto;
+    width: 100%;
+    padding: 20px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 25px;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    color: var(--dark-text);
+}
+
+.SearchBar_input::placeholder {
+    opacity: 0.5;
+    font-style: italic;
+}
+
+.SearchBar_input:focus {
+    outline: none;
+    box-shadow: 0 0 3pt 2pt var(--gold);
+}
+
+.SearchBar_ul {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+    transition: height 0.3s ease;
+    top: 400px;
+    position: static;
+    list-style-type: none;
+    list-style-image: none;
+}
+
+.SearchBar_spinner {
+    position: ;
+}
+/* https://codepen.io/mandelid/pen/vwKoe */
+#loading {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+    -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+@-webkit-keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
