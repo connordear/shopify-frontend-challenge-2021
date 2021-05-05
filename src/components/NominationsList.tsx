@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { nomineeCountSelector, nomineesAtom } from '../state';
 import { NominationDisplay } from './NominationDisplay';
 import '../styles/NominationsList.css';

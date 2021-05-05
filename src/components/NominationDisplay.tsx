@@ -1,10 +1,9 @@
 import React, { FC, useCallback } from 'react';
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { nomineesAtom } from '../state';
 import { Movie } from '../types';
 import update from 'immutability-helper';
 import '../styles/NominationDisplay.css';
-import { Col, Row, Space } from 'antd';
 
 interface NominationDisplayProps {
     movie: Movie;

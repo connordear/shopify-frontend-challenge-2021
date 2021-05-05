@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { CSSProperties, FC, useEffect, useRef, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import { useDebounce, useOutsideAlerter } from '../hooks';
 import { IOmdbResponse, Movie } from '../types';
 import { MovieSearchResult } from './MovieSearchResult';

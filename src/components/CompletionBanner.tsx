@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 import { useRecoilValue } from 'recoil';
 import { nomineeCountSelector } from '../state';
 import '../styles/CompletionBanner.css';
