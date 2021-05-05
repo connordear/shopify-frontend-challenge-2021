@@ -1,6 +1,6 @@
 import { Layout, Space } from 'antd';
 import React, { CSSProperties, FC } from 'react';
-import { NominationsList, SearchBar } from '.';
+import { NominationsList, SearchBar, CompletionBanner } from '.';
 
 const { Header, Footer, Content } = Layout;
 
@@ -28,6 +28,7 @@ export const Page: FC = () => {
                 <Space align={'center'}>
                     <SearchBar />
                     <NominationsList />
+                    <CompletionBanner />
                 </Space>
             </Content>
             <Footer style={footerStyle}>

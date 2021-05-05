@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useEffect, useState } from 'react';
 import { Movie } from '../types';
-import { nomineesAtom } from '../recoil';
+import { nomineesAtom } from '../state';
 import { useRecoilState } from 'recoil';
 import update from 'immutability-helper';
 

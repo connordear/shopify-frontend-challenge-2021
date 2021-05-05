@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { useRecoilState } from 'recoil';
-import { nomineesAtom } from '../recoil';
+import { nomineesAtom } from '../state';
 import { NominationDisplay } from './NominationDisplay';
 
 export const NominationsList: FC = () => {

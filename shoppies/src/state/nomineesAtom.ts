@@ -1,5 +1,5 @@
 import { atom } from 'recoil';
-import { Movie } from '../../types/movie/Movie';
+import { Movie } from '../types/movie/Movie';
 
 /**
  * Stores an array of imdbID's for the movies that we have added to our nominees list.

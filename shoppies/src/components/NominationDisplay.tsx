@@ -1,6 +1,6 @@
 import React, { FC, useCallback } from 'react';
 import { useRecoilState, useSetRecoilState } from 'recoil';
-import { nomineesAtom } from '../recoil';
+import { nomineesAtom } from '../state';
 import { Movie } from '../types';
 import update from 'immutability-helper';
 interface NominationDisplayProps {
