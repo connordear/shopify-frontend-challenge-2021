@@ -29,7 +29,7 @@ export const SearchBar: FC = () => {
         if (searchString.length === 0) return reset();
         setSearching(true);
         axios
-            .get<IOmdbResponse>(`http://omdbapi.com/?s=${searchString}&type=movie&apikey=46b690a6`)
+            .get<IOmdbResponse>(`https://omdbapi.com/?s=${searchString}&type=movie&apikey=46b690a6`)
             .then((res) => {
                 if (res.data.Response === 'True') {
                     setError('');
