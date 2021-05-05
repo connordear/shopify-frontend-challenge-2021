@@ -11,7 +11,7 @@ export const NominationsList: FC = () => {
         <div className={'NominationsList_wrapper'}>
             {nomineeCount > 0 ? (
                 <>
-                    <h3 className={'centered-text NominationsList_heading'}>Your Nominations</h3>
+                    <h3 className={'centered-text NominationsList_heading'}>Your Nominations ({nomineeCount}/5)</h3>
                     <p className={'centered-text NominationsList_p'}>(Click to remove)</p>
                     <ul className={'NominationsList_ul'}>
                         {Array.from(nominees.values()).map((nominee) => (
