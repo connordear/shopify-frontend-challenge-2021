@@ -61,6 +61,10 @@ The "Remove" button was relaced by displaying an "X" over the nomination. Clicki
 
 For the banner & reaching the 5 nominations, I wasn't so sure if we were allowed to let users nominate more than 5 movies? I ended up leaving it but it would be quite easy to just set all the results list buttons to be disabled when the number of nominees > 5.
 
+Sidenote: the spinner, banner, background animation were all small snippets of CSS I sniped, I take no credit for them but have linked to where I got them in my code.
+
+<div>Favicon made by <a href="https://www.flaticon.com/authors/monkik" title="monkik">monkik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
 ---
 
 ## Implementation Summary <a name="implementation"></a>
