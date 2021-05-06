@@ -22,5 +22,11 @@
 }
 
 .MSR_button:disabled {
-    background-color: var(--dark-opal);
+    background-color: grey;
+}
+
+@media screen and (max-width: 600px) {
+    .MSR_button {
+        font-size: 12px;
+    }
 }

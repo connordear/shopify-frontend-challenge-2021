@@ -20,7 +20,9 @@ export const NominationDisplay: FC<NominationDisplayProps> = ({ movie }) => {
         <li className={'NominationDisplay_li'}>
             <div className={'NominationDisplay_wrapper'} onClick={removeMovie}>
                 {movie.Poster !== 'N/A' ? (
-                    <img src={movie.Poster} height={300} width={200} />
+                    <div className={'NominationDisplay_img_wrapper'}>
+                        <img src={movie.Poster} className={'NominationDisplay_img'} height={300} width={200} />
+                    </div>
                 ) : (
                     <div className={'NominationDisplay_filler'}> </div>
                 )}

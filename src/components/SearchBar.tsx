@@ -13,7 +13,12 @@ export const SearchBar: FC = () => {
     const [error, setError] = useState<string>('');
 
     const wrapperRef = useRef(null);
+    const inputRef = useRef<HTMLInputElement>(null);
     useOutsideAlerter(wrapperRef, () => setDisplayResults(false));
+
+    useEffect(() => {
+        inputRef.current?.focus();
+    }, []);
 
     useEffect(() => {
         getMoviesByName(debouncedSearchText);
@@ -54,7 +59,7 @@ export const SearchBar: FC = () => {
         <>
             <div ref={wrapperRef} className={'flex-center SearchBar_wrapper'}>
                 <input
-                    // style={searchBarStyle}
+                    ref={inputRef}
                     className={'SearchBar_input input'}
                     value={searchText}
                     type={'text'}
@@ -72,7 +77,7 @@ export const SearchBar: FC = () => {
                     {searchResults.length > 0 ? (
                         searchResults.map((movie) => <MovieSearchResult key={movie.imdbID} movie={movie} />)
                     ) : (
-                        <p>{error}</p>
+                        <p className={'red'}>{error}</p>
                     )}
                 </ul>
             </div>

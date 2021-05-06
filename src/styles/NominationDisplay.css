@@ -11,6 +11,7 @@
     align-items: center;
     width: 300px;
     padding: 20px;
+    padding-bottom: 0;
 }
 
 .NominationDisplay_wrapper:hover {
@@ -22,4 +23,12 @@
     height: 300px;
     width: 200px;
     background-color: var(--dark-opal);
+}
+
+.NominationDisplay_img {
+    display: block;
+}
+
+.NominationDisplay_img_wrapper {
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 }
