@@ -10,6 +10,8 @@
     border: 0;
     border-top: 1px solid var(--dark-opal);
     display: flex;
+    align-items: center;
+    justify-content: flex-start;
     font-family: 'Work Sans', sans-serif;
     color: var(--dark-text);
     font-weight: 200;
@@ -23,6 +25,12 @@
 
 .MSR_button:disabled {
     background-color: grey;
+}
+
+.MSR_title {
+    margin: 0;
+    margin-left: 10px;
+    text-align: left;
 }
 
 @media screen and (max-width: 600px) {

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Roboto&family=Work+Sans:wght@200;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Roboto&family=Work+Sans:wght@100;200;400;700&display=swap');
 :root {
     --main-bg-color: #191c2c;
     --dark-text: #191c2cbb;
@@ -49,6 +49,14 @@ h2 {
 
 .centered-text {
     text-align: center;
+}
+
+.bottom-right-fixed {
+    font-family: 'Work Sans', sans-serif;
+    position: fixed;
+    bottom: 0px;
+    right: 20px;
+    font-weight: 200;
 }
 
 .red {

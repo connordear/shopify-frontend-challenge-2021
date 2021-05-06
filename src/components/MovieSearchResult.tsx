@@ -26,7 +26,7 @@ export const MovieSearchResult: FC<MovieSearchResultProps> = ({ movie }) => {
         <li className={'MSR_li'}>
             <button className={'MSR_button'} onClick={addToNominees} disabled={alreadyNominated}>
                 <img src={movie.Poster.length > 0 ? movie.Poster : notFoundImg} height={75} width={50} />
-                <h4 style={{ marginLeft: 10 }}>
+                <h4 className={'MSR_title'}>
                     {movie.Title} ({movie.Year})
                 </h4>
             </button>

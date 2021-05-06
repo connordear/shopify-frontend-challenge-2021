@@ -1,19 +1,41 @@
 import { Layout } from 'antd';
 import React, { CSSProperties, FC, useEffect, useState } from 'react';
+import { useRecoilState } from 'recoil';
 import { NominationsList, SearchBar, CompletionBanner } from '.';
+import { nomineesAtom } from '../state';
 import '../styles/master.css';
+import { Movie } from '../types';
 
-const { Header, Content } = Layout;
+const { Header, Footer, Content } = Layout;
 const layoutStyle: CSSProperties = {
     width: '100%',
     margin: '0 auto',
 };
 export const Page: FC = () => {
+    const [nominees, setNominees] = useRecoilState(nomineesAtom);
+
     const [titleClasses, setTitleClasses] = useState('centered-text red-highlight');
 
     useEffect(() => {
         setTitleClasses('centered-text red-highlight show-highlight');
+        const storedMap = localStorage.LS_NOMINEES;
+        if (storedMap !== null) {
+            let parsedMap = [];
+            try {
+                parsedMap = JSON.parse(storedMap);
+            } catch (err) {
+                parsedMap = [];
+            }
+            console.log(parsedMap);
+            setNominees(new Map<string, Movie>(parsedMap));
+        } else {
+            console.log('No saved state');
+        }
     }, []);
+
+    useEffect(() => {
+        localStorage.LS_NOMINEES = JSON.stringify(Array.from(nominees.entries()));
+    }, [nominees]);
 
     return (
         <Layout style={layoutStyle}>
@@ -27,9 +49,9 @@ export const Page: FC = () => {
                 <SearchBar />
                 <NominationsList />
             </Content>
-            {/* <Footer style={footerStyle}>
-                <h2 className={'centered-text'}>Connor Dear</h2>
-            </Footer> */}
+            <Footer>
+                <h3 className={'bottom-right-fixed'}>Created by Connor Dear</h3>
+            </Footer>
         </Layout>
     );
 };
