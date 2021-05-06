@@ -27,7 +27,6 @@ export const SearchBar: FC = () => {
 
     const getMoviesByName = async (searchString: string) => {
         if (searchString.length === 0) return reset();
-        setSearching(true);
         axios
             .get<IOmdbResponse>(`https://omdbapi.com/?s=${searchString}&type=movie&apikey=46b690a6`)
             .then((res) => {
@@ -47,6 +46,7 @@ export const SearchBar: FC = () => {
     };
 
     const handleInputTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearching(true);
         setSearchText(e.target.value);
     };
 
@@ -62,16 +62,18 @@ export const SearchBar: FC = () => {
                     onFocus={() => setDisplayResults(true)}
                     placeholder={'Enter a movie name, e.g. "moonrise kingdom"'}
                 ></input>
-                {searching && <div className={'SearchBar_spinner'} id={'loading'}></div>}
+                {<div className={'SearchBar_spinner'} id={'loading'} style={{ opacity: searching ? 1 : 0 }}></div>}
                 <ul
                     className={'SearchBar_ul'}
                     style={{
-                        height: displayResults && searchResults.length > 0 ? 300 : 0,
+                        height: displayResults && searchResults.length > 0 ? 300 : error.length > 0 ? 40 : 0,
                     }}
                 >
-                    {searchResults.length > 0
-                        ? searchResults.map((movie) => <MovieSearchResult key={movie.imdbID} movie={movie} />)
-                        : error}
+                    {searchResults.length > 0 ? (
+                        searchResults.map((movie) => <MovieSearchResult key={movie.imdbID} movie={movie} />)
+                    ) : (
+                        <p>{error}</p>
+                    )}
                 </ul>
             </div>
         </>

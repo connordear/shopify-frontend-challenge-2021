@@ -46,23 +46,27 @@ input.input {
     padding: 0;
     width: 100%;
     transition: height 0.3s ease;
-    top: 400px;
-    position: static;
+    position: relative;
+    top: -35px;
     list-style-type: none;
     list-style-image: none;
 }
 
 .SearchBar_spinner {
-    position: ;
+    position: relative;
+    bottom: 53px;
+    left: calc(50% - 35px);
+    z-index: 100;
+    transition: opacity 0.2s ease;
 }
 /* https://codepen.io/mandelid/pen/vwKoe */
 #loading {
     display: inline-block;
-    width: 50px;
-    height: 50px;
-    border: 3px solid rgba(255, 255, 255, 0.3);
+    width: 30px;
+    height: 30px;
+    border: 3px solid var(--opal);
     border-radius: 50%;
-    border-top-color: #fff;
+    border-top-color: var(--dark-opal);
     animation: spin 1s ease-in-out infinite;
     -webkit-animation: spin 1s ease-in-out infinite;
 }
