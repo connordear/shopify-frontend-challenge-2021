@@ -17,6 +17,7 @@
     font-weight: 200;
     font-size: 18px;
     background-color: var(--white);
+    cursor: pointer;
 }
 
 .MSR_button:hover {
@@ -25,6 +26,7 @@
 
 .MSR_button:disabled {
     background-color: grey;
+    cursor: not-allowed;
 }
 
 .MSR_title {

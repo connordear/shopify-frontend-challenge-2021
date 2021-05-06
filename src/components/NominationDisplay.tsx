@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect } from 'react';
+import React, { FC, useCallback } from 'react';
 import { useRecoilState } from 'recoil';
 import { nomineesAtom } from '../state';
 import { Movie } from '../types';
