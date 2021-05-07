@@ -79,6 +79,12 @@ Some highlights I thought were cool to go through the process of building (or fi
 -   movie search results check the Map for their ID and disable themselves if they're already in the map
 -   the page component monitors for nominee changes and saves the map to the local storage, loading it back in at load time. A possible improvement here could be to just store an array of the IMDB ID's, and then have the page query for the details by the ID's. The advantage here is that it would be much smaller in local storage in case a user wants to go crazy with nominations, and more importantly, the IDs could be inserted into the URL and the same loading logic could be re-used in order to create shareable links.
 
+## Bugs encountered
+
+The OMDB search did produce some duplicate entries which I found during my testing - I found that when I searched "inc", I would get duplicate entries for the movie "War, Inc.". This created an interesting bug since I was using the imdbID as the key for each of the results in the list. So even after resetting and clearing the array, the duplicated movie would still remain in the list.
+
+I just chose to plug the results into a Map (key=imdbID) before constructing the results list to ensure no duplicate imdbID's were added.
+
 ## Closing Thoughts
 
 Was a fun little project to work through, I learned some cleaner ways of doing fetching/debouncing than I had been using previously, and tried out some new styling practices in CSS.
