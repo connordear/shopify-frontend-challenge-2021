@@ -35,9 +35,14 @@ export const SearchBar: FC = () => {
         axios
             .get<IOmdbResponse>(`https://omdbapi.com/?s=${searchString}&type=movie&apikey=46b690a6`)
             .then((res) => {
-                if (res.data.Response === 'True') {
+                if (res.data.Response === 'True' && res.data.Search.length > 0) {
                     setError('');
-                    setSearchResults(res.data.Search.map((movieData) => new Movie(movieData)));
+                    // Push into set to avoid duplicates (test "inc")
+                    const uniqueMovies = res.data.Search.reduce(
+                        (map, nextMovie) => map.set(nextMovie.imdbID, new Movie(nextMovie)),
+                        new Map<string, Movie>(),
+                    );
+                    setSearchResults(Array.from(uniqueMovies.values()));
                 } else {
                     setError(res.data.Error);
                     setSearchResults([]);
