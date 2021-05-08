@@ -26,7 +26,7 @@ export const NominationDisplay: FC<NominationDisplayProps> = ({ movie }) => {
                 ) : (
                     <div className={'NominationDisplay_filler'}> </div>
                 )}
-                <h3 className={'centered-text'}>
+                <h3 className={'centered-text NominationDisplay_title'}>
                     {movie.Title} ({movie.Year})
                 </h3>
             </div>

@@ -2,8 +2,11 @@ import { Rating } from '../rating/Rating';
 import { IMovie } from './IMovie';
 
 export class Movie implements IMovie {
+    imdbID = '';
     Title = '';
+    Poster = '';
     Year = '';
+    Type = '';
     Rated = '';
     Released = '';
     Runtime = '';
@@ -15,13 +18,10 @@ export class Movie implements IMovie {
     Language = '';
     Country = '';
     Awards = '';
-    Poster = '';
     Ratings: Rating[] = [];
     Metascore = '';
     imdbRating = '';
     imdbVotes = '';
-    imdbID = '';
-    Type = '';
     DVD = '';
     BoxOffice = '';
     Production = '';

@@ -2,10 +2,14 @@ import axios from 'axios';
 import React, { FC, useEffect, useRef, useState } from 'react';
 import { useDebounce, useOutsideAlerter } from '../hooks';
 import { IOmdbResponse, Movie } from '../types';
-import { MovieSearchResult } from './MovieSearchResult';
+import { MovieSearchResult } from '.';
+import { MAX_NOMINEES } from '../common';
 import '../styles/SearchBar.css';
+import { nomineeCountSelector } from '../state';
+import { useRecoilValue } from 'recoil';
 
 export const SearchBar: FC = () => {
+    const nomineesCount = useRecoilValue(nomineeCountSelector);
     const [debouncedSearchText, searchText, setSearchText] = useDebounce('', 200);
     const [searching, setSearching] = useState(false);
     const [displayResults, setDisplayResults] = useState(false);
@@ -21,11 +25,19 @@ export const SearchBar: FC = () => {
     }, []);
 
     useEffect(() => {
+        if (nomineesCount >= MAX_NOMINEES) {
+            reset();
+            inputRef?.current?.blur();
+        }
+    }, [nomineesCount]);
+
+    useEffect(() => {
         getMoviesByName(debouncedSearchText);
     }, [debouncedSearchText]);
 
     const reset = () => {
         setSearching(false);
+        setSearchText('');
         setSearchResults([]);
         setError('');
     };
@@ -71,8 +83,9 @@ export const SearchBar: FC = () => {
                     onChange={handleInputTextChange}
                     onFocus={() => setDisplayResults(true)}
                     placeholder={'Enter a movie name, e.g. "moonrise kingdom"'}
+                    disabled={nomineesCount >= MAX_NOMINEES}
                 ></input>
-                {<div className={'SearchBar_spinner'} id={'loading'} style={{ opacity: searching ? 1 : 0 }}></div>}
+                <div className={'SearchBar_spinner'} id={'loading'} style={{ opacity: searching ? 1 : 0 }}></div>
                 <ul
                     className={'SearchBar_ul'}
                     style={{

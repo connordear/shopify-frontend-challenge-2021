@@ -1,9 +1,8 @@
 import React, { FC } from 'react';
 import { useRecoilValue } from 'recoil';
 import { nomineeCountSelector } from '../state';
+import { MAX_NOMINEES } from '../common';
 import '../styles/CompletionBanner.css';
-
-const NOMINEES_NEEDED = 5;
 
 export const CompletionBanner: FC = () => {
     const nomineeCount = useRecoilValue(nomineeCountSelector);
@@ -12,11 +11,11 @@ export const CompletionBanner: FC = () => {
         <div
             className={'CompletionBanner_wrapper'}
             style={{
-                height: nomineeCount >= NOMINEES_NEEDED ? 100 : 0,
-                opacity: nomineeCount >= NOMINEES_NEEDED ? 1 : 0,
+                height: nomineeCount >= MAX_NOMINEES ? 100 : 0,
+                opacity: nomineeCount >= MAX_NOMINEES ? 1 : 0,
             }}
         >
-            {nomineeCount >= 5 && (
+            {nomineeCount >= MAX_NOMINEES && (
                 <p className={'ribbon'}>
                     {' '}
                     <span className={'text'}>
