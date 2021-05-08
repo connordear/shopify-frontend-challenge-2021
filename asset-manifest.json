@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/shopify-frontend-challenge-2021/static/css/main.a8bc3ef1.chunk.css",
-    "main.js": "/shopify-frontend-challenge-2021/static/js/main.21b2efda.chunk.js",
-    "main.js.map": "/shopify-frontend-challenge-2021/static/js/main.21b2efda.chunk.js.map",
+    "main.css": "/shopify-frontend-challenge-2021/static/css/main.f2c5967f.chunk.css",
+    "main.js": "/shopify-frontend-challenge-2021/static/js/main.068777f2.chunk.js",
+    "main.js.map": "/shopify-frontend-challenge-2021/static/js/main.068777f2.chunk.js.map",
     "runtime-main.js": "/shopify-frontend-challenge-2021/static/js/runtime-main.790540d2.js",
     "runtime-main.js.map": "/shopify-frontend-challenge-2021/static/js/runtime-main.790540d2.js.map",
-    "static/js/2.fcf89e3b.chunk.js": "/shopify-frontend-challenge-2021/static/js/2.fcf89e3b.chunk.js",
-    "static/js/2.fcf89e3b.chunk.js.map": "/shopify-frontend-challenge-2021/static/js/2.fcf89e3b.chunk.js.map",
+    "static/js/2.047931d9.chunk.js": "/shopify-frontend-challenge-2021/static/js/2.047931d9.chunk.js",
+    "static/js/2.047931d9.chunk.js.map": "/shopify-frontend-challenge-2021/static/js/2.047931d9.chunk.js.map",
     "index.html": "/shopify-frontend-challenge-2021/index.html",
-    "static/css/main.a8bc3ef1.chunk.css.map": "/shopify-frontend-challenge-2021/static/css/main.a8bc3ef1.chunk.css.map",
-    "static/js/2.fcf89e3b.chunk.js.LICENSE.txt": "/shopify-frontend-challenge-2021/static/js/2.fcf89e3b.chunk.js.LICENSE.txt"
+    "static/css/main.f2c5967f.chunk.css.map": "/shopify-frontend-challenge-2021/static/css/main.f2c5967f.chunk.css.map",
+    "static/js/2.047931d9.chunk.js.LICENSE.txt": "/shopify-frontend-challenge-2021/static/js/2.047931d9.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.790540d2.js",
-    "static/js/2.fcf89e3b.chunk.js",
-    "static/css/main.a8bc3ef1.chunk.css",
-    "static/js/main.21b2efda.chunk.js"
+    "static/js/2.047931d9.chunk.js",
+    "static/css/main.f2c5967f.chunk.css",
+    "static/js/main.068777f2.chunk.js"
   ]
 }
