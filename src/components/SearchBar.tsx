@@ -1,12 +1,12 @@
-import axios from 'axios';
 import React, { FC, useEffect, useRef, useState } from 'react';
 import { useDebounce, useOutsideAlerter } from '../hooks';
-import { IOmdbResponse, Movie } from '../types';
+import { Movie } from '../types';
 import { MovieSearchResult } from '.';
 import { MAX_NOMINEES } from '../common';
 import '../styles/SearchBar.css';
 import { nomineeCountSelector } from '../state';
 import { useRecoilValue } from 'recoil';
+import { queryOmdbByMovieName } from '../common/api';
 
 export const SearchBar: FC = () => {
     const nomineesCount = useRecoilValue(nomineeCountSelector);
@@ -44,27 +44,20 @@ export const SearchBar: FC = () => {
 
     const getMoviesByName = async (searchString: string) => {
         if (searchString.length === 0) return reset();
-        axios
-            .get<IOmdbResponse>(`https://omdbapi.com/?s=${searchString}&type=movie&apikey=46b690a6`)
-            .then((res) => {
-                if (res.data.Response === 'True' && res.data.Search.length > 0) {
-                    setError('');
-                    // Push into set to avoid duplicates (test "inc")
-                    const uniqueMovies = res.data.Search.reduce(
-                        (map, nextMovie) => map.set(nextMovie.imdbID, new Movie(nextMovie)),
-                        new Map<string, Movie>(),
-                    );
-                    setSearchResults(Array.from(uniqueMovies.values()));
-                } else {
-                    setError(res.data.Error);
-                    setSearchResults([]);
-                }
-                setSearching(false);
-            })
-            .catch((error) => {
-                console.log(error);
-                setSearching(false);
-            });
+        const omdbResponse = await queryOmdbByMovieName(searchString);
+        if (omdbResponse.Response === 'True' && omdbResponse.Search.length > 0) {
+            setError('');
+            // Push into set to avoid duplicates (test "inc")
+            const uniqueMovies = omdbResponse.Search.reduce(
+                (map, nextMovie) => map.set(nextMovie.imdbID, new Movie(nextMovie)),
+                new Map<string, Movie>(),
+            );
+            setSearchResults(Array.from(uniqueMovies.values()));
+        } else {
+            setError(omdbResponse.Error);
+            setSearchResults([]);
+        }
+        setSearching(false);
     };
 
     const handleInputTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -19,17 +19,14 @@ export const Page: FC = () => {
     useEffect(() => {
         setTitleClasses('centered-text red-highlight show-highlight');
         const storedMap = localStorage.LS_NOMINEES;
-        if (storedMap !== null) {
+        if (storedMap !== undefined) {
             let parsedMap = [];
             try {
                 parsedMap = JSON.parse(storedMap);
             } catch (err) {
                 parsedMap = [];
             }
-            console.log(parsedMap);
             setNominees(new Map<string, Movie>(parsedMap));
-        } else {
-            console.log('No saved state');
         }
     }, []);
 

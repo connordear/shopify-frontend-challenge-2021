@@ -10,8 +10,15 @@ export const sampleMovie: Movie = new Movie({
     Year: '2001',
     imdbID: 'tt0120737',
 });
+export const sampleMovie2: Movie = new Movie({
+    Poster: 'N/A',
+    Title: 'The Lord of the Rings: The Return of the King',
+    Type: 'movie',
+    Year: '2003',
+    imdbID: 'tt0167260',
+});
 
-export const generateRandomMovie = () => {
+export const generateRandomMovie = (): Movie => {
     const rand = Math.random();
     return new Movie({
         imdbID: rand.toString(36).substring(7),
@@ -23,7 +30,7 @@ export const generateRandomMovie = () => {
 };
 
 export const getRandomInitializeStateFunction: (numMovies: number) => (mutableSnapshot: MutableSnapshot) => void = (
-    numMovies = 5,
+    numMovies,
 ) => {
     const movies: Movie[] = [];
     for (let i = 0; i < numMovies; i++) {

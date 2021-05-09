@@ -2,7 +2,6 @@ import React, { FC, useCallback, useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { Movie } from '../types';
 import { nomineesAtom } from '../state';
-import notFoundImg from '../assets/not-found.png';
 import update from 'immutability-helper';
 import '../styles/MovieSearchResult.css';
 interface MovieSearchResultProps {
@@ -25,7 +24,7 @@ export const MovieSearchResult: FC<MovieSearchResultProps> = ({ movie }) => {
     return (
         <li className={'MSR_li'}>
             <button className={'MSR_button'} onClick={addToNominees} disabled={alreadyNominated}>
-                <img src={movie.Poster.length > 0 ? movie.Poster : notFoundImg} height={75} width={50} />
+                <img src={movie.Poster} height={75} width={50} />
                 <h4 className={'MSR_title'}>
                     {movie.Title} ({movie.Year})
                 </h4>
