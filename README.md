@@ -7,6 +7,8 @@
 1. [Prompt](#prompt)
 2. [My Design & Thoughts](#discussion)
 3. [Implementation Summary](#implementation)
+4. [Testing](#testing)
+5. [Closing Thoughts](#closing)
 
 ## Prompt <a name="prompt"></a>
 
@@ -44,10 +46,13 @@ A mockup of a very bare-bones version was also provided.
 
 ---
 
-<div>
- <img src="./public/shoppies-search.png" alt="Shoppies Search" width="500"/>
- <img src="./public/shoppies-complete.png" alt="Shoppies Complete" width="460"/>
-</div>
+## <div>
+
+## <img src="./public/shoppies-search.png" alt="Shoppies Search" width="500"/>
+
+## <img src="./public/shoppies-complete.png" alt="Shoppies Complete" width="500"/>
+
+## </div>
 
 The main deviation from the design shown in the prompt is that instead of having two lists side-by-side, I opted to create a dropdown list in the search bar which would present the movies queried from the OMDB API.
 
@@ -79,12 +84,24 @@ Some highlights I thought were cool to go through the process of building (or fi
 -   movie search results check the Map for their ID and disable themselves if they're already in the map
 -   the page component monitors for nominee changes and saves the map to the local storage, loading it back in at load time. A possible improvement here could be to just store an array of the IMDB ID's, and then have the page query for the details by the ID's. The advantage here is that it would be much smaller in local storage in case a user wants to go crazy with nominations, and more importantly, the IDs could be inserted into the URL and the same loading logic could be re-used in order to create shareable links.
 
+---
+
 ## Bugs encountered
 
 The OMDB search did produce some duplicate entries which I found during my testing - I found that when I searched "inc", I would get duplicate entries for the movie "War, Inc.". This created an interesting bug since I was using the imdbID as the key for each of the results in the list. So even after resetting and clearing the array, the duplicated movie would still remain in the list.
 
 I just chose to plug the results into a Map (key=imdbID) before constructing the results list to ensure no duplicate imdbID's were added.
 
-## Closing Thoughts
+---
+
+## Testing <a name="testing"></a>
+
+## <img src="./public/tests.png" alt="Example Design" width="500"/>
+
+I actually learned a lot about React testing here with Enyzme/Jest, and was able to create some random initial state functions to help automate test creation.
+
+---
+
+## Closing Thoughts <a name="closing"></a>
 
 Was a fun little project to work through, I learned some cleaner ways of doing fetching/debouncing than I had been using previously, and tried out some new styling practices in CSS.
