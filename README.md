@@ -46,13 +46,10 @@ A mockup of a very bare-bones version was also provided.
 
 ---
 
-## <div>
-
-## <img src="./public/shoppies-search.png" alt="Shoppies Search" width="500"/>
-
-## <img src="./public/shoppies-complete.png" alt="Shoppies Complete" width="500"/>
-
-## </div>
+<div>
+ <img src="https://github.com/connordear/shopify-frontend-challenge-2021/blob/main/public/shoppies-complete.PNG" alt="Shoppies Search" height="225"/>
+ <img src="https://github.com/connordear/shopify-frontend-challenge-2021/blob/main/public/shoppies-search.PNG" alt="Shoppies Complete" height="225"/>
+</div>
 
 The main deviation from the design shown in the prompt is that instead of having two lists side-by-side, I opted to create a dropdown list in the search bar which would present the movies queried from the OMDB API.
 
@@ -96,7 +93,7 @@ I just chose to plug the results into a Map (key=imdbID) before constructing the
 
 ## Testing <a name="testing"></a>
 
-## <img src="./public/tests.png" alt="Example Design" width="500"/>
+## <img src="https://github.com/connordear/shopify-frontend-challenge-2021/blob/main/public/tests.PNG" alt="Example Design" width="500"/>
 
 I actually learned a lot about React testing here with Enyzme/Jest, and was able to create some random initial state functions to help automate test creation.
 
